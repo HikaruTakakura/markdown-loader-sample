@@ -1,24 +1,56 @@
 # markdown-sample
 
-## Project setup
-```
-npm install
+## 必要なパッケージのインストール
+
+```js
+npm install --save-dev html-loader markdown-loader
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
+## vue.config.js
+
+```js
+module.exports = {
+  configureWebpack: {
+    module: {
+      rules: [
+        {
+          test: /\.md$/,
+          use: [
+            {
+              loader: "html-loader"
+            },
+            {
+              loader: "markdown-loader",
+              options: {
+                /* your options here */
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+};
+
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## 〇〇.js
 
-### Lints and fixes files
-```
-npm run lint
-```
+```vue
+<template>
+  <div id="app">
+    <div v-html="sampleMd"></div>
+  </div>
+</template>
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+<script>
+import sampleMd from "@/assets/markdowns/sample.md";
+
+export default {
+  created() {
+    this.sampleMd = sampleMd;
+  }
+};
+</script>
+
+```
