@@ -36,9 +36,11 @@ module.exports = {
 
 ## 〇〇.js
 
+`@/assets/markdowns/sample.md` にマークダウンが配置されているとして...
+
 ```vue
 <template>
-  <div id="app">
+  <div>
     <div v-html="sampleMd"></div>
   </div>
 </template>
